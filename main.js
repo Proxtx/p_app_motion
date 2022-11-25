@@ -26,7 +26,7 @@ export class App {
       while (true) {
         (async () => {
           try {
-            await this.checkForNewVids();
+            if (!config.disable) await this.checkForNewVids();
             await this.checkForOldFile();
           } catch (e) {
             console.log(e);
