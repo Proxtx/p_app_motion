@@ -75,7 +75,7 @@ export class App {
   async checkForOldFile() {
     let file = await this.motionApi.nextIndexFile(this.config.pwd);
     if (file.time < Date.now() - 2 * 24 * 60 * 60 * 1000) {
-      await this.motionApi.deleteFile(cookie.pwd, file.file);
+      await this.motionApi.deleteFile(this.config.pwd, file.file);
     }
   }
 }
