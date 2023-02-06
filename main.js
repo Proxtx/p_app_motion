@@ -74,7 +74,10 @@ export class App {
 
   async checkForOldFile() {
     let file = await this.motionApi.nextIndexFile(this.config.pwd);
-    if (file.data.time < Date.now() - 2 * 24 * 60 * 60 * 1000) {
+    if (
+      file?.data?.time &&
+      file.data.time < Date.now() - 2 * 24 * 60 * 60 * 1000
+    ) {
       await this.motionApi.deleteFile(this.config.pwd, file.file);
     }
   }
